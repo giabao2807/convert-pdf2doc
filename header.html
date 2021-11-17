@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <a href="">Home</a>
+        <a href="">Document</a>
+        <div class="dropdown">
+          <button href="" class="dropbtn">
+            Dropdown <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdowncontent">
+            <a href="">Content1</a>
+            <a href="">Content2</a>
+          </div>
+        </div>
+        <a href="" class="login-btn">Login/Register </a>
+      </div>
+    </header>
+  </body>
+  <style>
+    body {
+      background-color: rgb(250, 240, 241);
+    }
+    .navbar {
+      background-color: rgb(196, 193, 193);
+      overflow: hidden;
+      width: 100%;
+    }
+    /* Style the links inside the navigation bar */
+    .navbar a {
+      font-size: 20px;
+      float: left;
+      display: block;
+      color: rgb(61, 49, 49);
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .login-btn {
+      margin-left: 72%;
+    }
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+    .dropdown .dropbtn {
+      font-size: 20px;
+      border: none;
+      outline: none;
+      color: rgb(61, 49, 49);
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+    }
+
+    .dropdowncontent {
+      display: none;
+      position: absolute;
+      background-color: rgb(196, 193, 193);
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(61, 57, 57, 0.2);
+      z-index: 1;
+    }
+    .dropdowncontent a {
+      float: none;
+      padding: 14px 16px;
+      display: block;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .dropbtn:hover,
+    a:hover {
+      background-color: rgb(151, 141, 141);
+    }
+
+    .dropdown:hover .dropdowncontent {
+      display: block;
+    }
+
+    .dropdown-menu {
+      float: right;
+      display: none;
+      position: absolute;
+      background-color: #333;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    .dropdown .btn1 {
+      width: 180px;
+      height: 50px;
+      text-align: center;
+    }
+
+    .dropright:hover .dropdown-menu {
+      display: block;
+      margin-left: 180px;
+      top: 100px;
+    }
+    .dropdown-menu a {
+      float: none;
+    }
+  </style>
+</html>
