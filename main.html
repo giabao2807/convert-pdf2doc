@@ -4,78 +4,88 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Trang Chủ</title>
+    <script
+      src="https://kit.fontawesome.com/1939b78ca2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <main role="main">
+    <header>
+      <div class="navbar">
+        <a href="">Home</a>
+        <a href="">Document</a>
+        <a href="">Welcome </a>
+        <a href="">Logout</a>
+      </div>
+    </header>
+    <main>
       <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">Chuyển PDF sang WORD!</h1>
-          <p>
-            Chuyển file PDF sang Word một cách kì diệu.Đăng nhập và nhấn 'chọn
-            file' để tải file PDF của bạn lên. Sau đó, phần mềm của chúng tôi sẽ
-            tự chuyển PDF sang Word. Cuối cùng, bạn có thể tải file mới về. Cách
-            để chuyển đổi PDF sang Word trực tuyến và miễn phí thật sự quá dễ
-            dàng với công cụ của chúng tôi. Bạn có thể thử ngày trên trang này.
-          </p>
-          <p>
-            <a class="btn btn-primary btn-lg" href="#" role="button"
-              >Learn more &raquo;</a
-            >
-          </p>
+        <div class="content-page">
+          <h1 class="display-3">
+            Chuyển PDF sang WORD ! <i class="far fa-file-pdf"></i>
+          </h1>
         </div>
       </div>
-
       <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-md-4">
-            <h2>An toàn!</h2>
-            <p>
-              Chúng tôi giữ file của bạn an toàn! Tất cả các file bạn tải lên và
-              chuyển từ PDF sang Word sẽ được giữ trong cơ sở dữ liệu của tài
-              khoản bạn. Xin hãy đọc chính sách riêng tư để biết thêm chi tiết.
-            </p>
-            <p>
-              <a class="btn btn-secondary" href="#" role="button"
-                >View details &raquo;</a
-              >
-            </p>
-          </div>
-          <div class="col-md-4">
-            <h2>Nhanh và tiện lợi</h2>
-            <p>
-              Chuyển PDF sang Word trong giây lát Cách để chuyển đổi PDF sang
-              Word trực tuyến và miễn phí thật sự quá dễ dàng với công cụ của
-              chúng tôi. Bạn có thể thử ngày trên trang này.
-            </p>
-            <p>
-              <a class="btn btn-secondary" href="#" role="button"
-                >View details &raquo;</a
-              >
-            </p>
-          </div>
-          <div class="col-md-4">
-            <h2>Windows, Mac và Linux</h2>
-            <p>
-              Phần mềm để chuyển PDF sang Word của chúng tôi làm việc trong
-              trình duyệt trên mạng. Vì thế, nó hoạt động được với tất cả các hệ
-              thống vận hành
-            </p>
-            <p>
-              <a class="btn btn-secondary" href="#" role="button"
-                >View details &raquo;</a
-              >
-            </p>
+        <h1>Convert here</h1>
+        <form class="form">
+          <input type="file" name="" class="input-file" />
+        </form>
+      </div>
+    </main>
+    <footer class="footer-wrap">
+      <div class="footer-content">
+        <div class="item">
+          <h2 class="title">TAGS</h2>
+          <div class="list-tags">
+            <a href="" class="tag">Document</a>
+            <a href="" class="tag">JSP-Servlet</a>
+            <a href="" class="tag">Java</a>
+            <a href="" class="tag">Maven</a>
+            <a href="" class="tag">Library</a>
+            <a href="" class="tag">HTML-CSS</a>
           </div>
         </div>
-
-        <hr />
+        <div class="item">
+          <h2 class="title">ABOUT US</h2>
+          <p>Đại học Bách Khoa - Đại học Đà Nẵng:</p>
+          <br />
+          <div class="list-tags">
+            <a href="" class="tag">Công Huấn </a>
+            <a href="" class="tag">Anh Khoa</a>
+            <a href="" class="tag">Gia Bảo</a>
+          </div>
+          <br />
+          <p>Team 3 - Lap trinh mang</p>
+        </div>
+        <div class="item">
+          <h2 class="title">CONTACT</h2>
+          <div class="subcribe-info">
+            <p>Contact us if you have any questions.</p>
+            <p>Join 3,453 other followers</p>
+            <input
+              type="email"
+              name=""
+              id=""
+              placeholder="Enter your email address"
+            />
+            <button class="btn-subcribe">SUBCRIBE</button>
+          </div>
+        </div>
       </div>
-      <!-- /container -->
-    </main>
+      <hr />
+      <div class="copyright">
+        <p>
+          <a href="#">WEBSITE BUILT WITH JSP-SERVLET</a>
+        </p>
+      </div>
+    </footer>
   </body>
-  <style>
+  <style lang="scss">
+    @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+    @import url("https://fonts.googleapis.com/css?family=Roboto");
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -89,131 +99,240 @@
       background-color: #fff;
     }
     main {
-      display: block;
+      color: #253e63;
+      display: inline-flex;
+      flex-direction: column;
       width: 90%;
       margin-left: 5%;
+      height: 750px;
     }
-    a {
+
+    /* Style for the navigation bar */
+    .navbar {
+      background-color: #545b62;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .navbar a {
+      font-size: 20px;
+      float: left;
+      display: block;
+      color: rgb(245, 239, 239);
+      text-align: center;
+      padding: 16px 30px 16px;
       text-decoration: none;
-      padding: 6px;
-      border-radius: 6%;
     }
+
+    a:hover {
+      background-color: #42474d;
+    }
+
+    /*style for main */
     .jumbotron {
       padding: 2rem 1rem;
-      margin-bottom: 2rem;
+      margin: 1rem;
+      margin-left: auto;
+      margin-right: auto;
       background-color: #e9ecef;
       border-radius: 0.3rem;
+      width: 90%;
+      height: 25%;
+      font-size: 20px;
+      justify-content: center;
     }
-    @media (min-width: 576px) {
-      .jumbotron {
-        padding: 4rem 2rem;
+    .jumbotron .content-page {
+      min-width: 992px !important;
+    }
+    .jumbotron .content-page .display-3 {
+      font-size: 4rem;
+      font-weight: 300;
+      line-height: 1;
+      text-align: center;
+    }
+    .jumbotron .content-page p {
+      width: 100%;
+      font-size: 20px;
+    }
+    .jumbotron .content-page a {
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 7%;
+      display: block;
+      color: #7e848d;
+      border: 1px solid;
+      width: 130px;
+    }
+    .jumbotron .content-page a:hover {
+      color: white;
+      background-color: #37475f;
+    }
+
+    main .container {
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      border-radius: 4px;
+      padding: 20px 20px 0px 20px;
+      background-color: #475b79;
+      box-shadow: #4d4f52 0px 1px 2px 0px, #333435 0px 1px 3px 1px;
+      text-align: center;
+      width: 90%;
+      margin: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 20px;
+    }
+    main .container h1 {
+      font-size: 3rem;
+      border: 1px solid #ffffff;
+      padding: 4px;
+      margin-top: 0;
+      line-height: 1;
+      text-align: center;
+      color: white;
+    }
+    main .container .input-file {
+      visibility: hidden;
+      position: absolute;
+    }
+
+    main .container input {
+      width: 600px;
+      height: 50px;
+      border: 1px solid #f4f8ff;
+      border-radius: 3px;
+      padding: 5px;
+      margin: 30px 0px 30px 40px;
+      color: white;
+    }
+    main .container input[type="submit"],
+    main .container input[type="reset"] {
+      color: #1a2638;
+      width: 150px;
+      height: 50px;
+      margin: 20px 15px 20px 15px;
+      cursor: pointer;
+      height: 30px;
+    }
+    main .container input[type="submit"]:hover,
+    main .container input[type="reset"]:hover {
+      background-color: #848688;
+      color: white;
+      box-shadow: #848688 0px 1px 2px 0px, #848688 0px 1px 3px 1px;
+    }
+    main .container a:hover {
+      background-color: #848688;
+      color: white;
+      box-shadow: #848688 0px 1px 2px 0px, #848688 0px 1px 3px 1px;
+    }
+
+    /*style for footer */
+    .footer-wrap {
+      padding: 20px 0 0;
+      background-color: #545b62;
+    }
+
+    .footer-content {
+      width: 95%;
+      margin: 0 auto;
+      display: flex;
+      color: #fff;
+
+      @media (max-width: 992px) {
+        width: 95%;
+      }
+
+      @media (max-width: 750px) {
+        width: 95%;
+        display: block;
       }
     }
 
-    .jumbotron .container {
-      min-width: 992px !important;
+    .item {
+      width: 35%;
+      margin: 0 15px 20px;
     }
-    .display-3 {
-      font-size: 4.5rem;
-      font-weight: 300;
-      line-height: 1.2;
-    }
-
-    .btn-primary {
-      color: #fff;
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-    .btn-primary:hover {
-      color: #fff;
-      background-color: #0069d9;
-      border-color: #0062cc;
-    }
-    .btn-primary.focus,
-    .btn-primary:focus {
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-    }
-    .btn-primary.disabled,
-    .btn-primary:disabled {
-      color: #fff;
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-    .btn-primary:not(:disabled):not(.disabled).active,
-    .btn-primary:not(:disabled):not(.disabled):active,
-    .show > .btn-primary.dropdown-toggle {
-      color: #fff;
-      background-color: #0062cc;
-      border-color: #005cbf;
-    }
-    .btn-primary:not(:disabled):not(.disabled).active:focus,
-    .btn-primary:not(:disabled):not(.disabled):active:focus,
-    .show > .btn-primary.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+    .item p {
+      margin: 0;
+      font-size: 20px;
     }
 
-    .btn-lg + .dropdown-toggle-split {
-      padding-right: 0.75rem;
-      padding-left: 0.75rem;
+    .title {
+      background-color: #ececec;
+      font-size: 18px;
+      padding: 12px;
+      color: #000;
+      margin: 0 0 10px 0;
+      font-weight: unset;
+      text-align: center;
+      word-wrap: break-word;
+      position: relative;
+      user-select: none;
     }
 
-    .btn-lg {
-      padding: 0.5rem 1rem;
-      font-size: 1.25rem;
-      line-height: 1.5;
-      border-radius: 0.3rem;
-    }
-
-    .row {
-      display: -webkit-box;
-      display: -ms-flexbox;
+    .list-tags {
       display: flex;
-      -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-      margin-right: -15px;
-      margin-left: -15px;
     }
 
-    .col-md-4 {
-      -webkit-box-flex: 0;
-      -ms-flex: 0 0 30%;
-      flex: 0 0 30%;
-      max-width: 30%;
-      margin-right: 20px;
-      margin-left: 20px;
+    .list-tags .tag {
+      border: 1px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 2px 7px;
+      margin: 0 10px 10px 0;
+      transition: 0.6s all linear;
     }
 
-    .btn-secondary {
-      color: #fff;
-      background-color: #6c757d;
-      border-color: #6c757d;
-    }
-    .btn-secondary:hover {
-      color: #fff;
-      background-color: #5a6268;
-      border-color: #545b62;
-    }
-    .btn-secondary.focus,
-    .btn-secondary:focus {
-      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
-    }
-    .btn-secondary.disabled,
-    .btn-secondary:disabled {
-      color: #fff;
-      background-color: #6c757d;
-      border-color: #6c757d;
-    }
-    .btn-secondary:not(:disabled):not(.disabled).active,
-    .btn-secondary:not(:disabled):not(.disabled):active,
-    .show > .btn-secondary.dropdown-toggle {
-      color: #fff;
+    .subcribe-info {
+      padding: 0 15px 25px;
       background-color: #545b62;
-      border-color: #4e555b;
+      color: #fff;
+      text-align: center;
     }
-    .btn-secondary:not(:disabled):not(.disabled).active:focus,
-    .btn-secondary:not(:disabled):not(.disabled):active:focus,
-    .show > .btn-secondary.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+
+    .subcribe-info p {
+      margin-bottom: 24px;
+    }
+
+    footer input {
+      display: block;
+      padding: 5px 10px;
+      margin: 0 auto;
+      border-radius: 3px;
+      transition: all 0.5s ease-in-out;
+      border: 1px solid transparent;
+      margin-bottom: 24px;
+      background-color: transparent;
+      color: #fff;
+    }
+
+    .btn-subcribe {
+      cursor: pointer;
+      background-color: #ececec;
+      padding: 10px 25px;
+      color: #000;
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+      border: 0;
+      outline: 0;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .copyright {
+      height: 50px;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .copyright a {
+      font-size: 20px;
+      color: #d3b062;
+      text-decoration: none;
     }
   </style>
 </html>
