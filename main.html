@@ -28,9 +28,17 @@
         </div>
       </div>
       <div class="container">
-        <h1>Convert here</h1>
-        <form class="form">
-          <input type="file" name="" class="input-file" />
+        <h1>✨ Convert here ✨</h1>
+        <form class="form" action="#" method="POST">
+          <div class="file-input">
+            <label for="fileUpload"
+              >Upload file <i class="fas fa-arrow-alt-circle-right"></i
+            ></label>
+            <input type="file" id="fileUpload" />
+          </div>
+          <br />
+          <input type="submit" value="Convert" />
+          <input type="reset" />
         </form>
       </div>
     </main>
@@ -181,43 +189,66 @@
       margin: 1rem;
       margin-left: auto;
       margin-right: auto;
-      font-size: 20px;
+      height: 400px;
+      color: white;
     }
     main .container h1 {
       font-size: 3rem;
       border: 1px solid #ffffff;
-      padding: 4px;
+      padding: 5px;
+      padding-top: 30px;
       margin-top: 0;
       line-height: 1;
       text-align: center;
       color: white;
+      height: 80px;
     }
-    main .container .input-file {
-      visibility: hidden;
-      position: absolute;
+    main .container .file-input {
+      padding-top: 20px;
+      border: 1px solid white;
+      padding-bottom: 20px;
+      height: 100px;
+      background-color: #8b99a7;
+    }
+    main .container .file-input label {
+      padding-top: 50px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: rgb(52, 59, 83);
+      margin-right: 30px;
+    }
+    input[type="file"]::file-selector-button {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #2a3441;
+      border: 2px solid #162b46;
+      padding: 0.2em 0.4em;
+      border-radius: 0.2em;
+      background-color: #ebebeb;
+      transition: 1s;
     }
 
-    main .container input {
-      width: 600px;
-      height: 50px;
-      border: 1px solid #f4f8ff;
-      border-radius: 3px;
-      padding: 5px;
-      margin: 30px 0px 30px 40px;
-      color: white;
+    input[type="file"]::file-selector-button:hover {
+      background-color: #6f7f8f;
+      color: rgb(255, 255, 255);
+      border: 2px solid #1c2c3b;
+      font-size: 1.5rem;
     }
+
     main .container input[type="submit"],
     main .container input[type="reset"] {
       color: #1a2638;
-      width: 150px;
+      font-weight: bold;
+      font-size: 1rem;
+      width: 20%;
       height: 50px;
-      margin: 20px 15px 20px 15px;
+      margin: 30px 15px 30px 15px;
       cursor: pointer;
-      height: 30px;
     }
     main .container input[type="submit"]:hover,
     main .container input[type="reset"]:hover {
-      background-color: #848688;
+      background-color: #6f7f8f;
       color: white;
       box-shadow: #848688 0px 1px 2px 0px, #848688 0px 1px 3px 1px;
     }
