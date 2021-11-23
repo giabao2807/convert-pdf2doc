@@ -8,6 +8,8 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+	
+	
 		<!-- pdf2word start -->
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
@@ -31,6 +33,7 @@
 			<artifactId>spire.doc.free</artifactId>
 			<version>2.7.3</version>
 		</dependency>
+		
 		<!-- pdf2word end -->
 	</dependencies>
 	<repositories>

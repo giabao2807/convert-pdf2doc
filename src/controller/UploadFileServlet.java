@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import model.bo.SourceBo;
+import model.dao.SourceDao;
+
 @WebServlet("/UploadFileServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
@@ -40,15 +43,23 @@ public class UploadFileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		  List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName())).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
+		List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()))
+				.collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
 
-		  for (Part filePart : fileParts) {
-		    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-		    InputStream fileContent = filePart.getInputStream();
-		    // ... (do your job here)
-		  }
-		request.setAttribute("message", "Upload File Success!");
-		getServletContext().getRequestDispatcher("/result.jsp").forward(request, response);
+		for (Part filePart : fileParts) {
+			// get fileName
+			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+			fileName = fileName.substring(0, fileName.length() - 4);
+
+			// get filecontent
+			InputStream fileContent = filePart.getInputStream();
+			SourceBo sourcebo = new SourceBo();
+			boolean isOkay = sourcebo.save(fileName, fileContent);
+		}
+
+		SourceBo bo = new SourceBo();
+		request.setAttribute("sources", bo.getAll());
+		getServletContext().getRequestDispatcher("/mainform.jsp").forward(request, response);
 	}
 
 	/**

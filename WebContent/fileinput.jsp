@@ -14,7 +14,7 @@
             <label class="label for="fileUpload"
               >Upload file <i class="fas fa-arrow-alt-circle-right"></i
             ></label>
-            <input class="input" type="file" id="fileUpload" />
+            <input class="input" type="file" name="file" acceppt="application/pdf" id="fileUpload" />
           </div>
           <br />
           <input class="button" type="submit" value="Convert" />
