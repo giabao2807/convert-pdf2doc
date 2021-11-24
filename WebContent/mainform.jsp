@@ -25,6 +25,7 @@
             <caption>Document list</caption>
             <tr>
                 <th>Filename </th>
+                <th>Status </th>
                 <th>Download</th>
             </tr>
             <%
@@ -33,9 +34,18 @@
         	%>
 	        <tr>
 	        	<td class='center'><%=source.getFilename()%></td>
-		        <td><a href="<%=request.getContextPath()%>/DownloadServlet" target ="_self">xxx</a></td>
+	        	<td class='center'>
+	        	<%
+	        		if (source.isStatus()) {
+	        	%>
+	        	available
+	        	<% } else { %>
+	        	unavailable
+	        	<% } %>
+	        	</td>
+		        <td><a href="<%=request.getContextPath()%>/DownloadServlet?id=<%=source.getId() %>" target ="_self">xxx</a></td>
 	        </tr>
-            <%	} %>
+           <%} %>
             </table>
             <a href="javascript:history.back();" class="button">Return</a>
         </div>

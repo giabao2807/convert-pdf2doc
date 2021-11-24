@@ -6,11 +6,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.bean.Account;
+import model.bo.SourceBo;
 
 /**
  * Servlet implementation class DownloadServlet
@@ -31,7 +35,10 @@ public class DownloadServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  // Thiết lập thông tin trả về
+		// Thiết lập thông tin trả về
+		SourceBo sourcebo = new SourceBo();
+		int id= Integer.parseInt(request.getParameter("id"));
+		
 		
 		byte[] data = null;
 	    response.setContentType("application/octet-stream");
@@ -47,6 +54,12 @@ public class DownloadServlet extends HttpServlet {
 	    }
 	    inputStream.close();
 	    outStream.close();
+	    
+	    //reload mainform
+		Account account = (Account)request.getSession().getAttribute("account");
+		request.setAttribute("sources", sourcebo.get(account.getUsername()));
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/mainform.jsp");
+		rd.forward(request, response);
 	}
 
 	/**

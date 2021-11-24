@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bean.Account;
 import model.bo.SourceBo;
 
 
@@ -39,7 +40,8 @@ public class OptionalServlet extends HttpServlet {
 			break;
 		}
 		case 2: {
-			request.setAttribute("sources", sourcebo.getAll());
+			Account account = (Account)request.getSession().getAttribute("account");
+			request.setAttribute("sources", sourcebo.get(account.getUsername()));
 			rd = getServletContext().getRequestDispatcher("/mainform.jsp");
 			rd.forward(request, response);
 			break;

@@ -29,7 +29,7 @@ public class SourceDao {
 			st = connection.createStatement();
 			rs = st.executeQuery(query);
 			while (rs.next()) {
-				Source source = new Source(rs.getString("filename"), rs.getString("username"));
+				Source source = new Source(rs.getInt("id"),rs.getString("filename"),rs.getBoolean("status"),rs.getString("username"));
 				System.out.println(source);
 				sources.add(source);
 			}
@@ -39,6 +39,31 @@ public class SourceDao {
 			try {
 				rs.close();
 				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sources;
+	}
+	
+	public List<Source> get(String username){
+		List<Source> sources = new ArrayList<Source>();
+		String query = "select * from source where username=?";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setString(1,username);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Source source = new Source(rs.getInt("id"),rs.getString("filename"),rs.getBoolean("status"),rs.getString("username"));
+				System.out.println(source);
+				sources.add(source);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

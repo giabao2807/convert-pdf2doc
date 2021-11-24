@@ -8,13 +8,17 @@ public class Source {
 	private boolean status;
 	private String username;
 	
-	public Source(String filename, String username) {
+	
+	
+	public Source(int id, String filename, boolean status, String username) {
 		super();
+		this.id = id;
 		this.filename = filename;
+		this.status = status;
 		this.username = username;
 	}
-	
-	
+
+
 	public Source(String filename, boolean status, String username) {
 		super();
 		this.filename = filename;

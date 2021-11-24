@@ -16,6 +16,9 @@ public class SourceBo {
 	public List<Source> getAll(){
 		return dao.getAll();
 	}
+	public List<Source> get(String username){
+		return dao.get(username);
+	}
 	
 	public boolean save(InputStream is, Source source) {
 		return dao.save(is,source);
