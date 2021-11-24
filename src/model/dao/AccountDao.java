@@ -65,4 +65,29 @@ public class AccountDao {
 		}
 		return false;
 	}
+	
+	public boolean save(Account account) {
+		boolean result = false;
+		String sql = "insert into Account(username,password)\n" + "values (?,?)";
+
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, account.getUsername());
+			pst.setString(2, account.getPassword());
+			int affectesRows = pst.executeUpdate();
+			result = affectesRows > 0;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

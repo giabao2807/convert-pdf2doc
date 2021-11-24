@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import model.bean.Account;
+import model.bean.Source;
 import model.bo.SourceBo;
 import model.dao.SourceDao;
 
@@ -37,12 +39,16 @@ public class UploadFileServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//get account in the sessions
+		Account account = (Account)request.getAttribute("account");
+		
+		//prepare business logic 
+		SourceBo sourcebo = new SourceBo();
+		
+		//Get fileParts
 		List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()))
 				.collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
 
@@ -53,35 +59,13 @@ public class UploadFileServlet extends HttpServlet {
 
 			// get filecontent
 			InputStream fileContent = filePart.getInputStream();
-			SourceBo sourcebo = new SourceBo();
-			boolean isOkay = sourcebo.save(fileName, fileContent);
+			Source newSource = new Source(fileName, false, account.getUsername());
+			sourcebo.save(fileContent, newSource);
 		}
-
-		SourceBo bo = new SourceBo();
-		request.setAttribute("sources", bo.getAll());
+		
+		request.setAttribute("sources", sourcebo.getAll());
 		getServletContext().getRequestDispatcher("/mainform.jsp").forward(request, response);
 	}
 
-	/**
-	 * Extracts file name from HTTP header content-disposition
-	 */
-	private String extractFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String[] items = contentDisp.split(";");
-		for (String s : items) {
-			if (s.trim().startsWith("filename")) {
-				return s.substring(s.indexOf("=") + 2, s.length() - 1);
-			}
-		}
-		return "";
-	}
-
-	public File getFolderUpload() {
-		File folderUpload = new File(System.getProperty("user.home") + "/Uploads");
-		if (!folderUpload.exists()) {
-			folderUpload.mkdirs();
-		}
-		return folderUpload;
-	}
 
 }

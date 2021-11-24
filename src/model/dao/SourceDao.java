@@ -46,13 +46,14 @@ public class SourceDao {
 		return sources;
 	}
 
-	public boolean save(String filename,InputStream is) {
+	public boolean save(InputStream is, Source source) {
 		try {
-			pst = connection.prepareStatement("insert into source(filename,pdf_text,username) values(?,?,'giabao')");
-			pst.setString(1, filename);
+			pst = connection.prepareStatement("insert into source(filename,pdf_text,status,username) values(?,?,?,?)");
+			pst.setString(1, source.getFilename());
 			pst.setBlob(2, is);
+			pst.setBoolean(3, source.isStatus());
+			pst.setString(4, source.getUsername());
 			int affectesRows = pst.executeUpdate();
-			System.out.println("Inserting Successfully!");
 			return affectesRows > 0;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

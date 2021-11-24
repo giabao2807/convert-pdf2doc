@@ -17,7 +17,7 @@ public class SourceBo {
 		return dao.getAll();
 	}
 	
-	public boolean save(String filename,InputStream is) {
-		return dao.save(filename,is);
+	public boolean save(InputStream is, Source source) {
+		return dao.save(is,source);
 	}
 }
