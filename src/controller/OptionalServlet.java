@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bo.SourceBo;
+
 
 @WebServlet("/OptionalServlet")
 public class OptionalServlet extends HttpServlet {
@@ -22,6 +24,7 @@ public class OptionalServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index = Integer.parseInt(request.getParameter("index"));
+		SourceBo sourcebo = new SourceBo();
 		RequestDispatcher rd =null;
 
 		switch (index) {
@@ -32,6 +35,12 @@ public class OptionalServlet extends HttpServlet {
 		}
 		case 1: {
 			rd = getServletContext().getRequestDispatcher("/register.jsp");
+			rd.forward(request, response);
+			break;
+		}
+		case 2: {
+			request.setAttribute("sources", sourcebo.getAll());
+			rd = getServletContext().getRequestDispatcher("/mainform.jsp");
 			rd.forward(request, response);
 			break;
 		}
