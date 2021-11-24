@@ -1,21 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Trang chủ</title>
   </head>
   <body>
     <header>
       <div class="navbar">
         <a href="">Home</a>
         <a href="">Document</a>
+        <a href="<%= request.getContextPath() %>/OptionalServlet?index=0" class="login-btn">Login/Register </a>
       </div>
     </header>
-    <main>
+    <main role="main">
       <div class="jumbotron">
-        <div class="content-page">
+        <div class="container">
           <h1 class="display-3">Chuyển PDF sang WORD!</h1>
           <p>
             Chuyển file PDF sang Word một cách kì diệu.Đăng nhập và nhấn 'chọn
@@ -31,28 +34,52 @@
           </p>
         </div>
       </div>
+
       <div class="container">
-        <h1>Login</h1>
-        <form
-          action="<%=request.getContextPath()%>/CheckLoginServlet"
-          method="POST"
-          name="form1"
-        >
-          <label for="username">Username</label>
-          <input type="text" name="username" id="username" /> <br />
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" />
-          <br />
-          <input type="submit" value="OK" onClick="checkInput()" />
-          <input type="reset" id="reset" />
-          <br />
-          <a
-            class="register"
-            href="<%= request.getContextPath()%>/RegisterServlet"
-            >Register</a
-          >
-        </form>
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>An toàn!</h2>
+            <p>
+              Chúng tôi giữ file của bạn an toàn! Tất cả các file bạn tải lên và
+              chuyển từ PDF sang Word sẽ được giữ trong cơ sở dữ liệu của tài
+              khoản bạn. Xin hãy đọc chính sách riêng tư để biết thêm chi tiết.
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="#" role="button"
+                >View details &raquo;</a
+              >
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h2>Nhanh và tiện lợi</h2>
+            <p>
+              Chuyển PDF sang Word trong giây lát Cách để chuyển đổi PDF sang
+              Word trực tuyến và miễn phí thật sự quá dễ dàng với công cụ của
+              chúng tôi. Bạn có thể thử ngày trên trang này.
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="#" role="button"
+                >View details &raquo;</a
+              >
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h2>Windows, Mac và Linux</h2>
+            <p>
+              Phần mềm để chuyển PDF sang Word của chúng tôi làm việc trong
+              trình duyệt trên mạng. Vì thế, nó hoạt động được với tất cả các hệ
+              thống vận hành
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="#" role="button"
+                >View details &raquo;</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
+      <!-- /container -->
     </main>
     <footer class="footer-wrap">
       <div class="footer-content">
@@ -115,14 +142,6 @@
       text-align: left;
       background-color: #fff;
     }
-    main {
-      color: #253e63;
-      display: inline-flex;
-      flex-direction: row;
-      width: 90%;
-      margin-left: 5%;
-      height: 550px;
-    }
 
     /* Style for the navigation bar */
     .navbar {
@@ -141,98 +160,141 @@
       text-decoration: none;
     }
 
+    .navbar .login-btn {
+      float: right;
+    }
+
     a:hover {
       background-color: #42474d;
     }
 
-    /*style for main */
+    /* style for main */
+    main {
+      display: block;
+      width: 90%;
+      margin-left: 5%;
+      height: 800px;
+    }
+    a {
+      text-decoration: none;
+      padding: 6px;
+      border-radius: 6%;
+    }
     .jumbotron {
       padding: 2rem 1rem;
-      margin-bottom: 1rem;
-      margin-top: 1rem;
+      margin-bottom: 2rem;
       background-color: #e9ecef;
       border-radius: 0.3rem;
-      width: 70%;
-      font-size: 20px;
-      justify-content: center;
     }
-    .jumbotron .content-page {
-      min-width: 992px !important;
+    @media (min-width: 576px) {
+      .jumbotron {
+        padding: 4rem 2rem;
+      }
     }
-    .jumbotron .content-page .display-3 {
+
+    .display-3 {
       font-size: 4.5rem;
       font-weight: 300;
       line-height: 1.2;
     }
-    .jumbotron .content-page p {
-      width: 90%;
+
+    .btn-primary {
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
     }
-    .jumbotron .content-page a {
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 7%;
-      display: block;
-      color: #253e63;
-      border: 1px solid;
-      width: 130px;
+    .btn-primary:hover {
+      color: #fff;
+      background-color: #0069d9;
+      border-color: #0062cc;
     }
-    .jumbotron .content-page a:hover {
-      color: white;
-      background-color: #37475f;
+    .btn-primary.focus,
+    .btn-primary:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+    }
+    .btn-primary.disabled,
+    .btn-primary:disabled {
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show > .btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #0062cc;
+      border-color: #005cbf;
+    }
+    .btn-primary:not(:disabled):not(.disabled).active:focus,
+    .btn-primary:not(:disabled):not(.disabled):active:focus,
+    .show > .btn-primary.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
     }
 
-    main .container {
-      font-family: Arial, Helvetica, sans-serif;
+    .btn-lg + .dropdown-toggle-split {
+      padding-right: 0.75rem;
+      padding-left: 0.75rem;
+    }
+
+    .btn-lg {
+      padding: 0.5rem 1rem;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      border-radius: 0.3rem;
+    }
+
+    .row {
+      width: 95%;
+      margin-left: 20px;
+      margin-right: 20px;
       display: flex;
-      flex-direction: column;
-      border-radius: 4px;
-      padding: 20px 20px 0px 20px;
-      box-shadow: #4d4f52 0px 1px 2px 0px, #333435 0px 1px 3px 1px;
-      text-align: center;
-      width: 30%;
-      margin: 1rem;
-      font-size: 20px;
+
+      @media (max-width: 992px) {
+        width: 90%;
+      }
+
+      @media (max-width: 750px) {
+        width: 90%;
+        display: block;
+      }
     }
 
-    main .container input {
-      width: 250px;
-      border: 1px solid #253e63;
-      border-radius: 3px;
-      padding: 4px;
-      margin: 30px 0px 30px 40px;
+    .col-md-4 {
+      width: 35%;
+      margin: 0 15px 20px;
     }
-    main .container input[type="submit"],
-    main .container input[type="reset"] {
-      color: #1a2638;
-      width: 150px;
-      margin: 20px 15px 20px 15px;
-      cursor: pointer;
-      height: 30px;
+
+    .btn-secondary {
+      color: #fff;
+      background-color: #6c757d;
+      border-color: #6c757d;
     }
-    main .container input[type="submit"]:hover,
-    main .container input[type="reset"]:hover {
-      background-color: #848688;
-      color: white;
-      box-shadow: #848688 0px 1px 2px 0px, #848688 0px 1px 3px 1px;
+    .btn-secondary:hover {
+      color: #fff;
+      background-color: #5a6268;
+      border-color: #545b62;
     }
-    main .container .register {
-      text-decoration: none;
-      padding: 4px;
-      border-radius: 7%;
-      display: block;
-      color: #253e63;
-      border: 1px solid;
-      width: 150px;
-      height: 30px;
-      margin-top: 20px;
-      margin-left: auto;
-      margin-right: auto;
+    .btn-secondary.focus,
+    .btn-secondary:focus {
+      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
     }
-    main .container .register:hover,
-    main .container a:hover {
-      background-color: #848688;
-      color: white;
-      box-shadow: #848688 0px 1px 2px 0px, #848688 0px 1px 3px 1px;
+    .btn-secondary.disabled,
+    .btn-secondary:disabled {
+      color: #fff;
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+    .btn-secondary:not(:disabled):not(.disabled).active,
+    .btn-secondary:not(:disabled):not(.disabled):active,
+    .show > .btn-secondary.dropdown-toggle {
+      color: #fff;
+      background-color: #545b62;
+      border-color: #4e555b;
+    }
+    .btn-secondary:not(:disabled):not(.disabled).active:focus,
+    .btn-secondary:not(:disabled):not(.disabled):active:focus,
+    .show > .btn-secondary.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
     }
 
     /*style for footer */
@@ -305,7 +367,7 @@
       margin-bottom: 24px;
     }
 
-    footer input {
+    input {
       display: block;
       padding: 5px 10px;
       margin: 0 auto;

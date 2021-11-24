@@ -1,44 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang Chủ</title>
-    <script
-      src="https://kit.fontawesome.com/1939b78ca2.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>Login</title>
   </head>
   <body>
     <header>
       <div class="navbar">
         <a href="">Home</a>
         <a href="">Document</a>
-        <a href="">Welcome </a>
-        <a href="">Logout</a>
       </div>
     </header>
     <main>
       <div class="jumbotron">
         <div class="content-page">
-          <h1 class="display-3">
-            Chuyển PDF sang WORD ! <i class="far fa-file-pdf"></i>
-          </h1>
+          <h1 class="display-3">Chuyển PDF sang WORD!</h1>
+          <p>
+            Chuyển file PDF sang Word một cách kì diệu.Đăng nhập và nhấn 'chọn
+            file' để tải file PDF của bạn lên. Sau đó, phần mềm của chúng tôi sẽ
+            tự chuyển PDF sang Word. Cuối cùng, bạn có thể tải file mới về. Cách
+            để chuyển đổi PDF sang Word trực tuyến và miễn phí thật sự quá dễ
+            dàng với công cụ của chúng tôi. Bạn có thể thử ngày trên trang này.
+          </p>
+          <p>
+            <a class="btn btn-primary btn-lg" href="#" role="button"
+              >Learn more &raquo;</a
+            >
+          </p>
         </div>
       </div>
       <div class="container">
-        <h1>✨ Convert here ✨</h1>
-        <form class="form" action="#" method="POST">
-          <div class="file-input">
-            <label for="fileUpload"
-              >Upload file <i class="fas fa-arrow-alt-circle-right"></i
-            ></label>
-            <input type="file" id="fileUpload" />
-          </div>
+        <h1>Register</h1>
+        <form
+          action="<%=request.getContextPath()%>/RegisterServlet"
+          method="POST"
+          name="form1"
+        >
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" /> <br />
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
           <br />
-          <input type="submit" value="Convert" />
-          <input type="reset" />
+          <input type="submit" value="Register" onClick="checkInput()" />
+          <input type="reset" id="reset" />
+          <br />
+          <a
+            class="register"
+            href="<%= request.getContextPath()%>/OptionalServlet?index=0"
+            >Try again login</a
+          >
         </form>
       </div>
     </main>
@@ -65,7 +79,7 @@
             <a href="" class="tag">Gia Bảo</a>
           </div>
           <br />
-          <p>Team 3 - Lap trinh mang</p>
+          <p>Team 3 - Lập trình mạng</p>
         </div>
         <div class="item">
           <h2 class="title">CONTACT</h2>
@@ -90,10 +104,7 @@
       </div>
     </footer>
   </body>
-  <style lang="scss">
-    @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
-    @import url("https://fonts.googleapis.com/css?family=Roboto");
-
+  <style>
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -109,10 +120,10 @@
     main {
       color: #253e63;
       display: inline-flex;
-      flex-direction: column;
+      flex-direction: row;
       width: 90%;
       margin-left: 5%;
-      height: 750px;
+      height: 650px;
     }
 
     /* Style for the navigation bar */
@@ -139,35 +150,29 @@
     /*style for main */
     .jumbotron {
       padding: 2rem 1rem;
-      margin: 1rem;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
       background-color: #e9ecef;
       border-radius: 0.3rem;
-      width: 90%;
-      height: 25%;
+      width: 70%;
       font-size: 20px;
       justify-content: center;
     }
-    .jumbotron .content-page {
-      min-width: 992px !important;
-    }
+
     .jumbotron .content-page .display-3 {
-      font-size: 4rem;
+      font-size: 4.5rem;
       font-weight: 300;
-      line-height: 1;
-      text-align: center;
+      line-height: 1.2;
     }
     .jumbotron .content-page p {
-      width: 100%;
-      font-size: 20px;
+      width: 90%;
     }
     .jumbotron .content-page a {
       text-decoration: none;
       padding: 10px;
       border-radius: 7%;
       display: block;
-      color: #7e848d;
+      color: #253e63;
       border: 1px solid;
       width: 130px;
     }
@@ -182,76 +187,49 @@
       flex-direction: column;
       border-radius: 4px;
       padding: 20px 20px 0px 20px;
-      background-color: #475b79;
       box-shadow: #4d4f52 0px 1px 2px 0px, #333435 0px 1px 3px 1px;
       text-align: center;
-      width: 90%;
+      width: 30%;
       margin: 1rem;
-      margin-left: auto;
-      margin-right: auto;
-      height: 400px;
-      color: white;
-    }
-    main .container h1 {
-      font-size: 3rem;
-      border: 1px solid #ffffff;
-      padding: 5px;
-      padding-top: 30px;
-      margin-top: 0;
-      line-height: 1;
-      text-align: center;
-      color: white;
-      height: 80px;
-    }
-    main .container .file-input {
-      padding-top: 20px;
-      border: 1px solid white;
-      padding-bottom: 20px;
-      height: 100px;
-      background-color: #8b99a7;
-    }
-    main .container .file-input label {
-      padding-top: 50px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      font-size: 1.8rem;
-      color: rgb(52, 59, 83);
-      margin-right: 30px;
-    }
-    input[type="file"]::file-selector-button {
-      margin-top: 20px;
-      font-size: 1.5rem;
-      color: #2a3441;
-      border: 2px solid #162b46;
-      padding: 0.2em 0.4em;
-      border-radius: 0.2em;
-      background-color: #ebebeb;
-      transition: 1s;
+      font-size: 20px;
     }
 
-    input[type="file"]::file-selector-button:hover {
-      background-color: #6f7f8f;
-      color: rgb(255, 255, 255);
-      border: 2px solid #1c2c3b;
-      font-size: 1.5rem;
+     main .container input {
+      width: 50%;
+      height: 25px;
+      border: 1px solid #253e63;
+      border-radius: 3px;
+      padding: 4px;
+      margin: 30px 0px 30px 40px;
     }
-
     main .container input[type="submit"],
     main .container input[type="reset"] {
       color: #1a2638;
-      font-weight: bold;
-      font-size: 1rem;
-      width: 20%;
-      height: 50px;
-      margin: 30px 15px 30px 15px;
+      width: 40%;
+      margin: 15px 15px 15px 15px;
       cursor: pointer;
+      height: 30px;
     }
     main .container input[type="submit"]:hover,
     main .container input[type="reset"]:hover {
-      background-color: #6f7f8f;
+      background-color: #848688;
       color: white;
       box-shadow: #848688 0px 1px 2px 0px, #848688 0px 1px 3px 1px;
     }
+    main .container .register {
+      text-decoration: none;
+      padding: 4px;
+      border-radius: 7%;
+      display: block;
+      color: #253e63;
+      border: 1px solid;
+      width: 150px;
+      height: 30px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    main .container .register:hover,
     main .container a:hover {
       background-color: #848688;
       color: white;
