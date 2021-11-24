@@ -9,35 +9,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class CheckLogoutServlet
- */
-@WebServlet("/CheckLogoutServlet")
-public class CheckLogoutServlet extends HttpServlet {
+
+@WebServlet("/OptionalServlet")
+public class OptionalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CheckLogoutServlet() {
+
+    public OptionalServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("admin", null);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-		dispatcher.forward(request, response);
+		int index = Integer.parseInt(request.getParameter("index"));
+		RequestDispatcher rd =null;
+
+		switch (index) {
+		case 0: {
+			rd = getServletContext().getRequestDispatcher("/login.jsp");
+			rd.forward(request, response);
+			break;
+		}
+		case 1: {
+			rd = getServletContext().getRequestDispatcher("/register.jsp");
+			rd.forward(request, response);
+			break;
+		}
+		default: {
+			rd = getServletContext().getRequestDispatcher("/error.jsp");
+			rd.forward(request, response);
+			break;
+		}
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
