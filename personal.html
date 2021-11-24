@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Form</title>
+    <script
+      src="https://kit.fontawesome.com/1939b78ca2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -36,13 +40,13 @@
                 <a
                   href="<%=request.getContextPath()%>/DownloadServlet"
                   target="_self"
-                  >xxx</a
-                >
+                  ><i class="fas fa-download"></i
+                ></a>
               </td>
             </tr>
             <% } %>
           </table>
-          <a href="javascript:history.back();" class="button">Return</a>
+          <a class="button" href="javascript:history.back();">Return</a>
         </div>
       </div>
     </main>
@@ -154,6 +158,7 @@
     }
     .jumbotron .content-page table {
       width: 100%;
+      margin-bottom: 20px;
     }
     .jumbotron .content-page caption {
       font-size: large;
@@ -179,16 +184,19 @@
       color: #1f3055;
       text-decoration: none;
     }
+    .jumbotron .content-page a:hover {
+      background-color: #e1effc;
+    }
     .jumbotron .content-page .button {
-      width: 40%;
+      width: 10%;
       color: #1f3055;
+      margin-right: 20px;
+      float: right;
       text-align: center;
       text-decoration: none;
       border: 1px solid #1f3055;
       border-radius: 4px;
-      margin-top: 50px;
-      margin-bottom: 5px;
-      padding: 5px;
+      padding: 10px;
     }
     .jumbotron .content-page .button:hover {
       background-color: #e1effc;
