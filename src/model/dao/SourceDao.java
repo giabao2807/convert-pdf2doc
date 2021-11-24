@@ -30,7 +30,6 @@ public class SourceDao {
 			rs = st.executeQuery(query);
 			while (rs.next()) {
 				Source source = new Source(rs.getInt("id"),rs.getString("filename"),rs.getBoolean("status"),rs.getString("username"));
-				System.out.println(source);
 				sources.add(source);
 			}
 		} catch (SQLException e) {
@@ -55,7 +54,6 @@ public class SourceDao {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				Source source = new Source(rs.getInt("id"),rs.getString("filename"),rs.getBoolean("status"),rs.getString("username"));
-				System.out.println(source);
 				sources.add(source);
 			}
 		} catch (SQLException e) {
@@ -87,6 +85,27 @@ public class SourceDao {
 			try {
 				pst.close();
 			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
+	public boolean delete(int id) {
+		String query = "delete from source where id=?";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, id);
+			if (pst.executeUpdate() > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

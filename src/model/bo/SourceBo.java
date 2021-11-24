@@ -23,4 +23,8 @@ public class SourceBo {
 	public boolean save(InputStream is, Source source) {
 		return dao.save(is,source);
 	}
+	
+	public boolean delete(int id) {
+		return dao.delete(id);
+	}
 }

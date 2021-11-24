@@ -21,10 +21,6 @@ import model.bo.SourceBo;
 import model.dao.SourceDao;
 
 @WebServlet("/UploadFileServlet")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-		maxFileSize = 1024 * 1024 * 50, // 50MB
-		maxRequestSize = 1024 * 1024 * 50) // 50MB
-
 public class UploadFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

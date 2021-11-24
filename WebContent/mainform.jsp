@@ -9,6 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Form</title>
+     <script
+      src="https://kit.fontawesome.com/1939b78ca2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -27,23 +31,29 @@
                 <th>Filename </th>
                 <th>Status </th>
                 <th>Download</th>
+                <th>Delete</th>
             </tr>
             <%
 	            List<Source> sources = (List<Source>)request.getAttribute("sources");
 	            for(Source source : sources){
         	%>
 	        <tr>
-	        	<td class='center'><%=source.getFilename()%></td>
+	        	<td><%=source.getFilename()%></td>
 	        	<td class='center'>
 	        	<%
 	        		if (source.isStatus()) {
 	        	%>
 	        	available
+	        	</td>
+		        <td><a class='center' href="<%=request.getContextPath()%>/DownloadServlet?id=<%=source.getId() %>" target ="_self"><i class="fas fa-download"></i
+                ></a></td>
 	        	<% } else { %>
 	        	unavailable
-	        	<% } %>
 	        	</td>
-		        <td><a href="<%=request.getContextPath()%>/DownloadServlet?id=<%=source.getId() %>" target ="_self">xxx</a></td>
+		        <td><a class='center' href="/" onclick="return false;"><i class="fas fa-download"></i
+                ></a></td>
+	        	<% } %>
+	        	<td><a class='center' href="<%=request.getContextPath()%>/DeleteServlet?id=<%=source.getId() %>"><i class="fas fa-trash-alt"></i></a></td>
 	        </tr>
            <%} %>
             </table>
@@ -158,47 +168,51 @@
       justify-content: center;
     }
     .jumbotron .content-page table {
-    width: 100%;
-  }
-  .jumbotron .content-page caption {
-    font-size: large;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  .jumbotron .content-page th,
-  .jumbotron .content-page td {
-    border-bottom: 1px solid #1f3055;
-  }
-  .jumbotron .content-page th {
-    background-color: #e1effc;
-    padding: 5px;
-  }
-  .jumbotron .content-page td.center {
-    text-align: center;
-    padding: 5px;
-  }
-  .jumbotron .content-page tr:hover {
-    background-color: #e1effc;
-  }
-  .jumbotron .content-page a {
-    color: #1f3055;
-    text-decoration: none;
-  }
-  .jumbotron .content-page .button {
-    width: 40%;
-    color: #1f3055;
-    text-align: center;
-    text-decoration: none;
-    border: 1px solid #1f3055;
-    border-radius: 4px;
-    margin-top: 50px;
-    margin-bottom: 5px;
-    padding: 5px;
-  }
-  .jumbotron .content-page .button:hover {
-    background-color: #e1effc;
-    box-shadow: #e1effc 0px 1px 2px 0px, #e1effc 0px 1px 3px 1px;
-  }
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .jumbotron .content-page caption {
+      font-size: large;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .jumbotron .content-page th,
+    .jumbotron .content-page td {
+      border-bottom: 1px solid #1f3055;
+    }
+    .jumbotron .content-page th {
+      background-color: #e1effc;
+      padding: 5px;
+    }
+    .jumbotron .content-page td.center {
+      text-align: center;
+      padding: 5px;
+    }
+    .jumbotron .content-page tr:hover {
+      background-color: #e1effc;
+    }
+    .jumbotron .content-page a {
+      color: #1f3055;
+      text-decoration: none;
+    }
+    .jumbotron .content-page a:hover {
+      background-color: #e1effc;
+    }
+    .jumbotron .content-page .button {
+      width: 10%;
+      color: #1f3055;
+      margin-right: 20px;
+      float: right;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid #1f3055;
+      border-radius: 4px;
+      padding: 10px;
+    }
+    .jumbotron .content-page .button:hover {
+      background-color: #e1effc;
+      box-shadow: #e1effc 0px 1px 2px 0px, #e1effc 0px 1px 3px 1px;
+    }
 
     /*style for footer */
     .footer-wrap {
