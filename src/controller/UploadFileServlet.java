@@ -43,7 +43,7 @@ public class UploadFileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//get account in the sessions
-		Account account = (Account)request.getAttribute("account");
+		Account account = (Account)request.getSession().getAttribute("account");
 		
 		//prepare business logic 
 		SourceBo sourcebo = new SourceBo();
