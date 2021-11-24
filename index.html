@@ -158,8 +158,8 @@
       text-decoration: none;
     }
 
-    .login-btn {
-      margin-left: 70%;
+    .navbar .login-btn {
+      float: right;
     }
 
     a:hover {
@@ -245,22 +245,24 @@
     }
 
     .row {
-      display: -webkit-box;
-      display: -ms-flexbox;
+      width: 95%;
+      margin-left: 20px;
+      margin-right: 20px;
       display: flex;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      margin-right: -15px;
-      margin-left: -15px;
+
+      @media (max-width: 992px) {
+        width: 90%;
+      }
+
+      @media (max-width: 750px) {
+        width: 90%;
+        display: block;
+      }
     }
 
     .col-md-4 {
-      -webkit-box-flex: 0;
-      -ms-flex: 0 0 30%;
-      flex: 0 0 30%;
-      max-width: 30%;
-      margin-right: 20px;
-      margin-left: 20px;
+      width: 35%;
+      margin: 0 15px 20px;
     }
 
     .btn-secondary {

@@ -15,8 +15,8 @@
       <div class="navbar">
         <a href="">Home</a>
         <a href="">Document</a>
-        <a href="" class="welcome">Welcome </a>
-        <a href="">Logout</a>
+        <a href="" class="logout">Logout </a>
+        <a href="" class="welcome">Welcome</a>
       </div>
     </header>
     <main>
@@ -29,12 +29,23 @@
       </div>
       <div class="container">
         <h1>✨ Convert here ✨</h1>
-        <form class="form" action="#" method="POST">
+        <form
+          class="form"
+          action="<%=request.getContextPath()%>/UploadFileServlet"
+          method="POST"
+          enctype="multipart/form-data"
+        >
           <div class="file-input">
             <label for="fileUpload"
               >Upload file <i class="fas fa-arrow-alt-circle-right"></i
             ></label>
-            <input type="file" id="fileUpload" />
+            <input
+              class="input"
+              type="file"
+              name="file"
+              acceppt="application/pdf"
+              id="fileUpload"
+            />
           </div>
           <br />
           <input type="submit" value="Convert" />
@@ -136,8 +147,9 @@
       background-color: #42474d;
     }
 
-    .navbar .welcome {
-      margin-left: 65%;
+    .navbar .welcome,
+    .navbar .logout {
+      float: right;
     }
     /*style for main */
     .jumbotron {
@@ -151,9 +163,6 @@
       height: 25%;
       font-size: 20px;
       justify-content: center;
-    }
-    .jumbotron .content-page {
-      min-width: 992px !important;
     }
     .jumbotron .content-page .display-3 {
       font-size: 4rem;

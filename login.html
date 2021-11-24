@@ -48,7 +48,7 @@
           <br />
           <a
             class="register"
-            href="<%= request.getContextPath()%>/RegisterServlet"
+            href="<%= request.getContextPath()%>/OptionalServlet?index=2"
             >Register</a
           >
         </form>
@@ -121,7 +121,7 @@
       flex-direction: row;
       width: 90%;
       margin-left: 5%;
-      height: 550px;
+      height: 650px;
     }
 
     /* Style for the navigation bar */
@@ -156,15 +156,12 @@
       font-size: 20px;
       justify-content: center;
     }
-    .jumbotron .content-page {
-      min-width: 992px !important;
-    }
     .jumbotron .content-page .display-3 {
       font-size: 4.5rem;
       font-weight: 300;
       line-height: 1.2;
     }
-    .jumbotron .content-page p {
+    .jumbotron .content-page .display-3 p {
       width: 90%;
     }
     .jumbotron .content-page a {
