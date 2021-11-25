@@ -1,3 +1,5 @@
+<%@page import="model.bean.Account"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,7 +8,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>register</title>
+    <script>
+	function checkInput() {
+		var username = document.getElementById("username").value;
+		var password = document.getElementById("password").value;
+		if (username == "" || password == "") {
+			alert("Mời nhập đủ thông tin!");
+			return false;
+		}
+		<%
+		List<Account> accounts = (List<Account>)request.getAttribute("accounts");
+        for(Account a : accounts){
+        	%>
+        	if(username== "<%=a.getUsername() %>") {
+        		alert("Username đã tồn tài! Mời nhập username khác");
+        	}
+        	<%
+        }
+		%>
+	}
+</script>
   </head>
   <body>
     <header>

@@ -40,9 +40,9 @@ public class DownloadServlet extends HttpServlet {
 		int id= Integer.parseInt(request.getParameter("id"));
 		
 		
-		byte[] data = null;
+		byte[] data = sourcebo.get(id);
 	    response.setContentType("application/octet-stream");
-	    response.setHeader("Content-disposition", "attachment; filename=demo.txt");
+	    response.setHeader("Content-disposition", "attachment; filename=demo.docx");
 	    response.setContentLength(data.length);
 	    InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(data));
 	    // Ghi file ra response outputstream. 

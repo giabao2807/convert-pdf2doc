@@ -7,6 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <script>
+	function checkInput() {
+		var a = document.getElementById("username").value;
+		var b = document.getElementById("password").value;
+		if (a == "" || b == "") {
+			alert("Mời nhập đủ thông tin!");
+			return false;
+		}
+	}
+</script>
   </head>
   <body>
     <header>

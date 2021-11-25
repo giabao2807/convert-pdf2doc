@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Account;
+import model.bo.AccountBo;
 import model.bo.SourceBo;
 
 
@@ -26,6 +27,7 @@ public class OptionalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int index = Integer.parseInt(request.getParameter("index"));
 		SourceBo sourcebo = new SourceBo();
+		AccountBo accountbo = new AccountBo();
 		RequestDispatcher rd =null;
 
 		switch (index) {
@@ -35,6 +37,7 @@ public class OptionalServlet extends HttpServlet {
 			break;
 		}
 		case 1: {
+			request.setAttribute("accounts", accountbo.getAll());
 			rd = getServletContext().getRequestDispatcher("/register.jsp");
 			rd.forward(request, response);
 			break;
@@ -44,6 +47,11 @@ public class OptionalServlet extends HttpServlet {
 			request.setAttribute("sources", sourcebo.get(account.getUsername()));
 			rd = getServletContext().getRequestDispatcher("/mainform.jsp");
 			rd.forward(request, response);
+			break;
+		}
+		case 3:{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/fileinput.jsp");
+			dispatcher.forward(request, response);
 			break;
 		}
 		default: {

@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,6 +68,31 @@ public class SourceDao {
 			}
 		}
 		return sources;
+	}
+	
+	public byte[] get(int id) {
+		byte[] requestData =null;
+		String query = "select * from source where id=?";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setInt(1,id);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Blob blob = rs.getBlob("pdf_text");
+				requestData = blob.getBytes(1, (int)blob.length());
+				blob.free();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return requestData;
 	}
 
 	public boolean save(InputStream is, Source source) {

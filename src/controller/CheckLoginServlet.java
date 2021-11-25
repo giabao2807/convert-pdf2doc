@@ -38,7 +38,6 @@ public class CheckLoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		AccountBo accountbo = new AccountBo();
 
-		
 		if(accountbo.isExist(username, password)) {
 			Account account = new Account(username, password);
 			request.getSession().setAttribute("account",account);

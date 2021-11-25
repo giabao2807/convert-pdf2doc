@@ -20,6 +20,10 @@ public class SourceBo {
 		return dao.get(username);
 	}
 	
+	public byte[] get(int id) {
+		return dao.get(id);
+	}
+	
 	public boolean save(InputStream is, Source source) {
 		return dao.save(is,source);
 	}
