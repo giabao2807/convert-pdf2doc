@@ -10,6 +10,14 @@ public class Source {
 	
 	
 	
+	
+	public Source(String filename, byte[] document_text) {
+		super();
+		this.filename = filename;
+		this.document_text=document_text;
+	}
+
+
 	public Source(int id, String filename, boolean status, String username) {
 		super();
 		this.id = id;

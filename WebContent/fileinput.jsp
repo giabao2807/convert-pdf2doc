@@ -10,6 +10,24 @@
 <title>Trang Chủ</title>
 <script src="https://kit.fontawesome.com/1939b78ca2.js"
 	crossorigin="anonymous"></script>
+  <script>
+        function fileValidation() {
+            var fileInput = 
+                document.getElementById('file');
+              
+            var filePath = fileInput.value;
+          
+            // Allowing file type
+            var allowedExtensions = 
+                    /(\.pdf)$/i;
+              
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file type');
+                fileInput.value = '';
+                return false;
+            } 
+        }
+    </script>
 </head>
 <body>
 	<% Account account = (Account)request.getSession().getAttribute("account");
@@ -40,10 +58,11 @@
 				method="POST" enctype="multipart/form-data">
 				<div class="file-input">
 					<label for="fileUpload">Upload file <i
-						class="fas fa-arrow-alt-circle-right"></i></label> <input class="input"
-						type="file" name="file" acceppt="application/pdf" id="fileUpload" />
+						class="fas fa-arrow-alt-circle-right"></i></label> 
+					<input class="input" type="file" id="file" onchange="return fileValidation()" name="file">
 				</div>
-				<br /> <input type="submit" value="Convert" /> <input type="reset" />
+				<br />
+				 <input type="submit" value="Convert" /> <input type="reset" />
 			</form>
 		</div>
 	</main>
@@ -250,7 +269,7 @@ input[type="file"]::file-selector-button:hover {
 	font-size: 1.5rem;
 }
 
-main .container input[type="submit"], main .container input[type="reset"]
+ input[type="submit"],input[type="reset"]
 	{
 	color: #2f3031;
 	font-weight: bold;
@@ -285,38 +304,6 @@ main .container a:hover {
 	margin: 0 auto;
 	display: flex;
 	color: #fff;
-	@media
-	(
-	max-width
-	:
-	992px)
-{
-	width
-	:
-	 
-	95
-	%;
-	
-      
-}
-
-@media ( max-width : 750px) {
-	width
-	:
-	 
-	95
-	%;
-	
-        
-	display
-	:
-	 
-	block
-	;
-	
-      
-}
-
 }
 .item {
 	width: 35%;

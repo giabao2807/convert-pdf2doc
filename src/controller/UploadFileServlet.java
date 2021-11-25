@@ -21,6 +21,7 @@ import model.bo.SourceBo;
 import model.dao.SourceDao;
 
 @WebServlet("/UploadFileServlet")
+@MultipartConfig
 public class UploadFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

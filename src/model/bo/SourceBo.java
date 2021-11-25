@@ -24,6 +24,10 @@ public class SourceBo {
 		return dao.get(id);
 	}
 	
+	public Source getSource(int id){
+		return dao.getSource(id);
+	}
+	
 	public boolean save(InputStream is, Source source) {
 		return dao.save(is,source);
 	}

@@ -69,6 +69,30 @@ public class SourceDao {
 		}
 		return sources;
 	}
+	public Source getSource(int id){
+		Source source = null;
+		String query = "select * from source where id=?";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setInt(1,id);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Blob blob = rs.getBlob("document_text");
+				source = new Source(rs.getString("filename"),blob.getBytes(1, (int)blob.length()));
+				blob.free();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return source;
+	}
 	
 	public byte[] get(int id) {
 		byte[] requestData =null;

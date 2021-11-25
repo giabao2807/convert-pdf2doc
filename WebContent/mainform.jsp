@@ -1,3 +1,4 @@
+<%@page import="model.bean.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="model.bean.Source"%>
@@ -15,6 +16,10 @@
     ></script>
   </head>
   <body>
+  	<% Account account = (Account)request.getSession().getAttribute("account");
+		if (account !=null ) 
+		{
+		%>
     <header>
       <div class="navbar">
         <a href="">Home</a>
@@ -108,6 +113,11 @@
         </p>
       </div>
     </footer>
+    	<%
+		} else{
+			response.sendRedirect("login.jsp");
+		}
+	%>
   </body>
   <style>
     body {
