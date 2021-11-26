@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,7 @@ import model.dao.SourceDao;
 @MultipartConfig
 public class UploadFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private SourceBo sourcebo = new SourceBo();
 
 	public UploadFileServlet() {
 		super();
@@ -32,8 +34,6 @@ public class UploadFileServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 
@@ -42,27 +42,30 @@ public class UploadFileServlet extends HttpServlet {
 		//get account in the sessions
 		Account account = (Account)request.getSession().getAttribute("account");
 		
-		//prepare business logic 
-		SourceBo sourcebo = new SourceBo();
-		
 		//Get fileParts
 		List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()))
 				.collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
 
 		for (Part filePart : fileParts) {
+			System.out.println(filePart);
 			// get fileName
-			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
+			System.out.println(fileName);
+			// MSIE fix
 			fileName = fileName.substring(0, fileName.length() - 4);
-
+			
+			
 			// get filecontent
 			InputStream fileContent = filePart.getInputStream();
 			Source newSource = new Source(fileName, false, account.getUsername());
 			sourcebo.save(fileContent, newSource);
 		}
 		
-		request.setAttribute("sources", sourcebo.getAll());
-		getServletContext().getRequestDispatcher("/mainform.jsp").forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/mainform.jsp");
+//		dispatcher.forward(request, response);
+		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/OptionalServlet?index=2"));
 	}
+	
 
 
 }
