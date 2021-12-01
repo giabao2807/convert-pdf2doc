@@ -39,31 +39,37 @@ public class UploadFileServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//get account in the sessions
-		Account account = (Account)request.getSession().getAttribute("account");
-		
-		//Get fileParts
+		boolean isCheck=true;
+		// get account in the sessions
+		Account account = (Account) request.getSession().getAttribute("account");
+
+		// prepare business logic
+		SourceBo sourcebo = new SourceBo();
+
+		// Get fileParts
 		List<Part> fileParts = request.getParts().stream().filter(part -> "file".equals(part.getName()))
 				.collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
 
 		for (Part filePart : fileParts) {
-			System.out.println(filePart);
-			// get fileName
-			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); 
-			System.out.println(fileName);
-			// MSIE fix
+			String fileName = new String(Paths.get(filePart.getSubmittedFileName()).getFileName().toString().getBytes(),
+					"UTF-8");
+			if(fileName.length()==0) {
+				isCheck=false;
+				break;
+			}
+			
 			fileName = fileName.substring(0, fileName.length() - 4);
-			
-			
 			// get filecontent
 			InputStream fileContent = filePart.getInputStream();
 			Source newSource = new Source(fileName, false, account.getUsername());
 			sourcebo.save(fileContent, newSource);
 		}
-		
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("/mainform.jsp");
-//		dispatcher.forward(request, response);
-		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/OptionalServlet?index=2"));
+
+		if(isCheck) {
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/OptionalServlet?index=2"));
+		} else {
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/OptionalServlet?index=3"));
+		}
 	}
 	
 

@@ -11,6 +11,14 @@
 <script src="https://kit.fontawesome.com/1939b78ca2.js"
 	crossorigin="anonymous"></script>
   <script>
+	function checkInput() {
+		var a = document.getElementById('file').files.length;
+		if (a == 0) {
+			alert("No file selected.");
+			return false;
+		}
+	}
+  
         function fileValidation() {
             var fileInput = 
                 document.getElementById('file');
@@ -62,7 +70,8 @@
 					<input class="input" type="file" id="file" onchange="return fileValidation()" name="file">
 				</div>
 				<br />
-				 <input type="submit" value="Convert" /> <input type="reset" />
+				 <input type="submit" value="Convert" onClick=checkInput() /> 
+				 <input type="reset" />
 			</form>
 		</div>
 	</main>
