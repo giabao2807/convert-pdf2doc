@@ -3,7 +3,7 @@ using jsp-servlet to build application convert pdf to docx
 
 
 # server:
-https://github.com/giabao2807/convert-pdf2docx-server
+https://github.com/giabao2807/convert-pdf2docx-server contact me for this repo
 
 The server using library pdf2docx of python to convert if status of source in database = 'false'
 It must be run throughout the client execution, ensuring that the newly included files are always converted.
